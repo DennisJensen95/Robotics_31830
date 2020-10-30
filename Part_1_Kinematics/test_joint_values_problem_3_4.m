@@ -1,7 +1,7 @@
 clear
 clc
 close all
-%% Init
+%% Problem 3 - Joint coordinates for each knot-point
 
 % Transformation matrix
 T_task_0 = [1,0,0,1.4;0,1,0,0;0,0,1,0.2;0,0,0,1];
@@ -44,7 +44,7 @@ end
 
 Q
 
-%% Trajectories
+%% Problem 4 - Trajectories
 
 format short
 
