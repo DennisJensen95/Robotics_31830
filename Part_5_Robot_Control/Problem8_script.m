@@ -6,10 +6,10 @@ close all
 STEP_SIZE = 0.1;
 SIM_TIME = 10;
 
-J_M_i = 0.1;
-f_M_i = 0.01;
+J_M_i = 1320*10^(-7);
+f_M_i = 2.4*10^(-5);
 n_i = 53;
-k_T_i = 10;
+k_T_i = 0.17;
 
 %%
 
