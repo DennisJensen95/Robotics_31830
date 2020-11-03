@@ -54,7 +54,7 @@ zeta = 1;
 K_p = omega_n^2 * Jeff / kT;
 K_D = 2*zeta/omega_n * K_p - feff / kT;
 
-T_L = -abs(h);
+T_L = h;
 % T_L = zeros(4,1);
 
 %% Transfor functions
@@ -71,7 +71,7 @@ F = [tf([f1(1),f2(1)],1);
     tf([f1(3),f2(3)],1);
     tf([f1(4),f2(4)],1)];
 
-G = 1/n ./ Jeff;
+G = 1/n^2 ./ Jeff;
 
 %% SIMULATION
 
