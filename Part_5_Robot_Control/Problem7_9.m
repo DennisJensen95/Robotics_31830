@@ -72,7 +72,7 @@ D44 = 2*K1;
 x0 = [pi/6; 1.35; -pi/2];
 
 % upper bound
-x1 = [3*pi; 3; 5*pi/4];
+x1 = [3*pi/4; 3; 5*pi/4];
 
 % find maximum value
 sol1 = fmincon(@(x) -D11(x(1),x(2),x(3)), x0, [], [], [], [], x0, x1);
