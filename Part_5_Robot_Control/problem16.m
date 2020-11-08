@@ -104,7 +104,7 @@ u = simout.u.Data;
 t = simout.q.Time;
 e = simout.error.Data;
 
-%% PLOT A4
+%% PLOT A5
 
 figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
