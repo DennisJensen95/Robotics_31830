@@ -109,6 +109,8 @@ plot(t,q(:,2),'-r','LineWidth',2)
 plot(t,q(:,3),'-.g','LineWidth',2)
 plot(t,q(:,4),'--c','LineWidth',2)
 
+% xlim([0,0.6])
+
 l = legend('$q_i^r$', '$q_1$','$q_2$', '$q_3$', '$q_4$','Location','SouthEast');
 set(l,'FontName','times','FontSize',12,'interpreter','latex')
 sgtitle("A4")
