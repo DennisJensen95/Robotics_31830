@@ -76,4 +76,4 @@ ylabel('y','FontName','times','FontSize',16,'interpreter','latex')
 xlabel('x','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
-sgtitle("A11 plot")
+sgtitle("A11")
