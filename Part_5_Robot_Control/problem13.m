@@ -59,19 +59,19 @@ T_L = h;
 
 %% Transfor functions
 
-n1 = (feff + kT * K_D)./Jeff;
-n2 = kT * K_p ./ Jeff;
-
-Ni = tf([1, n1(1), n2(1)],[1]);
-
-f1 = kT * K_D ./ Jeff;
-f2 = kT * K_p ./ Jeff;
-F = [tf([f1(1),f2(1)],1);
-    tf([f1(2),f2(2)],1);
-    tf([f1(3),f2(3)],1);
-    tf([f1(4),f2(4)],1)];
-
-G = 1/n^2 ./ Jeff;
+% n1 = (feff + kT * K_D)./Jeff;
+% n2 = kT * K_p ./ Jeff;
+% 
+% Ni = tf([1, n1(1), n2(1)],[1]);
+% 
+% f1 = kT * K_D ./ Jeff;
+% f2 = kT * K_p ./ Jeff;
+% F = [tf([f1(1),f2(1)],1);
+%     tf([f1(2),f2(2)],1);
+%     tf([f1(3),f2(3)],1);
+%     tf([f1(4),f2(4)],1)];
+% 
+% G = 1/n^2 ./ Jeff;
 
 %% SIMULATION
 
@@ -79,7 +79,7 @@ G = 1/n^2 ./ Jeff;
 qr = [0.35, 0.35, 0.35, 0.35];
 % step time
 step_time = 0.01; % used in simulation
-simout = sim("Problem13_model");
+simout = sim("Problem13_model_v2");
 
 q = simout.q.Data;
 u = simout.u.Data;
@@ -93,7 +93,7 @@ hold on, grid on
 plot(t,u(:,1),'--k')
 plot(t,q(:,1),'-b','LineWidth',3)
 ylabel('State value','FontName','times','FontSize',16,'interpreter','latex')
-% xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
+xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
 plot(t,q(:,2),'-r','LineWidth',2)
@@ -109,7 +109,7 @@ figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(t,e(:,1),'-b','LineWidth',3)
 ylabel('State value','FontName','times','FontSize',16,'interpreter','latex')
-% xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
+xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
 plot(t,e(:,2),'-r','LineWidth',2)
