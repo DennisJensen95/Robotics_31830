@@ -101,14 +101,19 @@ simout = sim("Problem18_model_v2");
 
 p = simout.p.Data;
 px = p(:,1); py = p(:,2);
+pr = simout.pr.Data;
+pxr = pr(:,1); pyr = pr(:,2);
 t = simout.tout;
 
 %% PLOT A9
 figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(px,py,'-r','LineWidth',3)
+plot(pxr,pyr,'--k','LineWidth',3)
 ylabel('y','FontName','times','FontSize',16,'interpreter','latex')
 xlabel('x','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
+l = legend('Actual path','Wanted path','Location','NorthWest');
+set(l,'FontName','times','FontSize',12,'interpreter','latex')
 
 sgtitle("A9")
