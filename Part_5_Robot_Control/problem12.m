@@ -51,7 +51,7 @@ figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(t,u(:,1),'--k')
 plot(t,q(:,1),'-b','LineWidth',3)
-ylabel('$q_1$','FontName','times','FontSize',16,'interpreter','latex')
+ylabel('Joint value','FontName','times','FontSize',16,'interpreter','latex')
 xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
@@ -96,7 +96,7 @@ figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(t,u(:,1),'--k')
 plot(t,q(:,1),'-b','LineWidth',3)
-ylabel('$q_1$','FontName','times','FontSize',16,'interpreter','latex')
+ylabel('Joint value','FontName','times','FontSize',16,'interpreter','latex')
 xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
