@@ -58,46 +58,46 @@ tau_i = abs(Jeff);
 
 K_p = (omega_n.^2*tau_i + 2*omega_n*zeta) ./ kT;
 K_D = (2*omega_n*zeta*tau_i + 1 - feff) ./ kT;
-K_I = omega_n^2 / kT;
+K_I = omega_n^2 / kT * ones(4,1);
 
 T_L = abs(h);
 % T_L = h;
 
 %% Transfor functions
 
-n0 = kT*K_I;
-n1 = kT*K_p;
-n2 = feff + kT*K_D;
-n3 = Jeff;
-
-N = [tf([n3(1), n2(1), n1(1), n0],1);
-     tf([n3(2), n2(2), n1(2), n0],1);
-     tf([n3(3), n2(3), n1(3), n0],1);
-     tf([n3(4), n2(4), n1(4), n0],1)];
-
-f0 = kT * K_I;
-f1 = kT * K_p;
-f2 = kT * K_D;
-
-F = [tf([f2(1), f1(1), f0],1);
-     tf([f2(2), f1(2), f0],1)
-     tf([f2(3), f1(3), f0],1)
-     tf([f2(4), f1(4), f0],1)];
-
-G = tf([1/n^2, 0],1);
-
-fp0 = 1;
-fp1 = K_p ./ K_I;
-fp2 = K_D ./ K_I;
-
-FP = [tf(1,[fp2(1), fp1(1), fp0]);
-      tf(1,[fp2(2), fp1(2), fp0])
-      tf(1,[fp2(3), fp1(3), fp0])
-      tf(1,[fp2(4), fp1(4), fp0])];
+% n0 = kT*K_I;
+% n1 = kT*K_p;
+% n2 = feff + kT*K_D;
+% n3 = Jeff;
+% 
+% N = [tf([n3(1), n2(1), n1(1), n0],1);
+%      tf([n3(2), n2(2), n1(2), n0],1);
+%      tf([n3(3), n2(3), n1(3), n0],1);
+%      tf([n3(4), n2(4), n1(4), n0],1)];
+% 
+% f0 = kT * K_I;
+% f1 = kT * K_p;
+% f2 = kT * K_D;
+% 
+% F = [tf([f2(1), f1(1), f0],1);
+%      tf([f2(2), f1(2), f0],1)
+%      tf([f2(3), f1(3), f0],1)
+%      tf([f2(4), f1(4), f0],1)];
+% 
+% G = tf([1/n^2, 0],1);
+% 
+% fp0 = 1;
+% fp1 = K_p ./ K_I;
+% fp2 = K_D ./ K_I;
+% 
+% FP = [tf(1,[fp2(1), fp1(1), fp0]);
+%       tf(1,[fp2(2), fp1(2), fp0])
+%       tf(1,[fp2(3), fp1(3), fp0])
+%       tf(1,[fp2(4), fp1(4), fp0])];
 
 %% SIMULATION
 
-simout = sim("Problem18_model");
+simout = sim("Problem18_model_v2");
 
 p = simout.p.Data;
 px = p(:,1); py = p(:,2);

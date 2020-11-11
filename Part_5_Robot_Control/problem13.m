@@ -55,6 +55,7 @@ K_p = omega_n^2 * Jeff / kT;
 K_D = 2*zeta/omega_n * K_p - feff / kT;
 
 T_L = h;
+T_L = abs(h);
 % T_L = zeros(4,1);
 
 %% Transfor functions
