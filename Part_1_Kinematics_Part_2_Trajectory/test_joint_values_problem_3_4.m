@@ -35,7 +35,7 @@ for i = 1:5
     q1 = atan2(r24(i)-a4*r21(i), r14(i)-a4*r11(i));
     q2 = atan2(sqrt((r24(i)-a4*r21(i))^2 + (r14(i)-a4*r11(i))^2), r34(i)-a4*r31(i)-d1);
     q3 = sqrt((r24(i)-a4*r21(i))^2 + (r14(i)-a4*r11(i))^2 + (r34(i)-a4*r31(i)-d1)^2);
-    q4 = atan2(r31(i), sqrt(r11(i)^2 + r21(i)^2)) + q2;
+    q4 = atan2(r31(i), sqrt(r11(i)^2 + r21(i)^2)) - q2;
     
     % adjust q4 so it is within limits
     if q4 < - pi/2

@@ -46,23 +46,6 @@ GM = [0.1165   -0.5825    0.7767         0         0   -0.3430
     0.0641   -0.3205    0.4274         0         0    2.5161
     0.0025   -0.0125    0.0167         0         0    3.0301];
 
-% GM = [0.1165   -0.5825    0.7767         0         0   -0.3430
-%    -0.0063    0.0314   -0.0419         0         0    1.7570
-%     0.0616   -0.3082    0.4109         0         0    1.5127
-%    -0.0063    0.0314   -0.0419         0         0    0.1862
-%    -0.0960    0.4800   -0.6401         0         0    0.2783
-%    -0.0044    0.0222   -0.0296         0         0    1.7234
-%     0.0629   -0.3144    0.4192         0         0    1.8414
-%    -0.0044    0.0222   -0.0296         0         0    0.1526
-%     0.0816   -0.4079    0.5438         0         0   -0.2337
-%    -0.0033    0.0164   -0.0218         0         0    1.6998
-%     0.0636   -0.3181    0.4242         0         0    2.1768
-%    -0.0033    0.0164   -0.0218         0         0    0.1290
-%    -0.0709    0.3544   -0.4725         0         0    0.2013
-%    -0.0025    0.0125   -0.0167         0         0    1.6823
-%     0.0641   -0.3205    0.4274         0         0    2.5161
-%    -0.0025    0.0125   -0.0167         0         0    0.1115];
-
 Jeff = [0.0188, 0.0188, 0.0027, 0.0004].';
 feff = 2.4*10^(-5);
 n = 53;
@@ -70,30 +53,7 @@ kT = 0.17;
 g = 9.8;
 
 %% Calculate H
-% lower bound
-x0 = [pi/6; 1.35; -pi/2];
-
-% upper bound
-x1 = [3*pi/4; 3; 5*pi/4];
-
-% elements
-h1 = 0;
-h2 = @(q2,q3,q4) g*(1/2*m4*a4*cos(q2+q4) + (m2*(dd2 - 1/2*L2) + m3*(1/2*L3-q3)...
-    - m4*q3) *sin(q2));
-h3 = @(q2) g*(m3+m4)*cos(q2);
-h4 = @(q2,q4) g*1/2*a4*m4*cos(q2+q4);
-
-% find maximum value
-% sol1 = fmincon(@(x) -h1(x(1),x(2),x(3)), x0, [], [], [], [], x0, x1);
-sol2 = fmincon(@(x) -abs(h2(x(1),x(2),x(3))), x0, [], [], [], [], x0, x1);
-sol3 = fmincon(@(x) -(h3(x)), x0(1), [], [], [], [], x0(1), x1(1));
-% sol4 = fmincon(@(x) h4(x(1),x(2)), x0(1:2:3), [], [], [], [], x0(1:2:3), x1(1:2:3));
-sol4 = [pi/2, -pi/2];
-
-% construct supD vector
-h = [h1; h2(sol2(1), sol2(2), sol2(3)); ...
-    h3(sol3(1)); h4(sol4(1), sol4(2))];
-
+h = calc_h();
 
 %% Problem 17 : Simulation parameters
 
@@ -154,13 +114,13 @@ qr = simout.qr;
 t = simout.q.Time;
 e = simout.error.Data;
 
-%% PLOT A5
+%% PLOT A7
 
 figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(t,q(:,1),'-b','LineWidth',3)
 ylabel('State value','FontName','times','FontSize',16,'interpreter','latex')
-% xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
+xlabel('Time $[s]$','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
 plot(t,q(:,2),'-r','LineWidth',2)
@@ -172,7 +132,7 @@ set(l,'FontName','times','FontSize',12,'interpreter','latex')
 % ylim([0,0.4])
 sgtitle("A7")
 
-%% PLOT XY
+%% PLOT A8
 figure, h1 = subplot(1,1,1); set(h1,'FontName','times','FontSize',16)
 hold on, grid on
 plot(px,py,'-r','LineWidth',3)
@@ -180,4 +140,4 @@ ylabel('y','FontName','times','FontSize',16,'interpreter','latex')
 xlabel('x','FontName','times','FontSize',16,'interpreter','latex')
 % axis([-0.5,2,0,0.4])
 
-sgtitle("XY plot")
+sgtitle("A8")
